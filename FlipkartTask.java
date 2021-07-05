@@ -1,5 +1,7 @@
 package org.sample1;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,18 +35,42 @@ public class FlipkartTask {
 		
 		List<WebElement> phones = driver.findElements(By.xpath("//div[contains(text(),'APPLE iPhone 11')]"));
 		
+		List<String> high =new ArrayList<String>();
+		
 		for(WebElement as:phones) {
-			System.out.println(as.getText());
+			high.add(as.getText());
 		}
 		
+		List<String>sorted= new ArrayList<String>(high);
 		
-		List<WebElement> rates = driver.findElements(By.xpath("//div[@class='_30jeq3 _1_WHN1']"));
+		Collections.sort(sorted);
 		
-		for(WebElement sa:rates) {
+		System.out.println("Model ShortList");
+		
+		for(String sr:sorted) {
 			
-			System.out.println(sa.getText());
+			System.out.println(sr);
 		}
 		
+		List<WebElement> price = driver.findElements(By.xpath("//div[@class='_30jeq3 _1_WHN1']"));
+		
+		List<String>prices = new ArrayList<String>();
+		
+		for(WebElement sa:price) {
+			prices.add(sa.getText());
+		}
+		
+		List<String>sortedprices = new ArrayList<String>(prices);
+		
+		Collections.sort(sortedprices);
+		
+		System.out.println("Prices ShortListed");
+		
+		for(String pr:sortedprices) {
+			
+		System.out.println(pr);
+		
+		}
 		driver.quit();
 		
 		}
